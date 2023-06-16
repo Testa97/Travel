@@ -8,9 +8,6 @@
         {% for destinazione in destinazioni %}
         <div class="col-md-6">
             <div class="destination-card">
-                <div class="image-wrapper">
-                    <img src="{{ destinazione.immagine }}" alt="{{ destinazione.nome }}" class="img-fluid destination-image">
-                </div>
                 <h3>{{ destinazione.nome }}</h3>
                 <a href="destinations/{{ destinazione.nome }}">Scopri</a>
             </div>
@@ -19,16 +16,4 @@
     </div>
 </div>
 
-<style>
-    .image-wrapper {
-        height: 300px; /* Imposta l'altezza desiderata per le immagini */
-        overflow: hidden; /* Nasconde eventuali parti dell'immagine che superano l'altezza definita */
-    }
-
-    .destination-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-</style>
 {% endblock %}
