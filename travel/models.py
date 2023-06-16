@@ -19,10 +19,7 @@ class Prenotazione(models.Model):
     data_fine = models.DateField()
     numero_persone = models.PositiveIntegerField()
     prezzo = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-
-    def __str__(self):
-        return self.prenotazione_id
-
+    
 class Struttura(models.Model):
     destinazione = models.ForeignKey(Destinazione, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
