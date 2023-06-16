@@ -28,9 +28,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '9eCGdeGGFHQ2MCOROJRJMf4LSHE72D
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ["djangorailway-production.up.railway.app", "127.0.0.1", "localhost"]
-
-CSRF_TRUSTED_ORIGINS = ['https://djangorailway-production.up.railway.app']
+ALLOWED_HOSTS = ["travel-production-2cc5.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ['https://travel-production-2cc5.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
@@ -81,12 +80,16 @@ WSGI_APPLICATION = 'django_project1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'travel',
-        'USER': 'admin',
-        'PASSWORD': 'Gattone',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'L5vt3Dl0R897asssnPq5',
+        'HOST': 'containers-us-west-49.railway.app',
+        'PORT': '7761',
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -110,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'it-it'
 
 TIME_ZONE = 'UTC'
 
@@ -122,6 +125,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -131,11 +139,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
