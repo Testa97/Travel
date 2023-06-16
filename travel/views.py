@@ -22,32 +22,7 @@ def search_destinations(request):
         return render(request, "travel/search_destinations.html", {})
 
 def destinations(request):
-    destinazioni = [
-        {
-            "nome": "Roma",
-            "immagine": "static/images/roma.jpg",
-        },
-        {
-            "nome": "Firenze",
-            "immagine": "static/images/firenze2.jpeg",
-        },
-        {
-            "nome": "Barcellona",
-            "immagine": "static/images/barcellona.jpg",
-        },
-        {
-            "nome": "Parigi",
-            "immagine": "static/images/parigi2.jpeg",
-        },
-        {
-            "nome": "New York",
-            "immagine": "static/images/new_york2.jpeg",
-        },
-        {
-            "nome": "Amsterdam",
-            "immagine": "static/images/amsterdam.jpg",
-        }
-    ]
+    destinazioni = Destinazione.objects.all()
 
     context={
         "destinazioni": destinazioni
